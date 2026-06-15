@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-base: #040e1f;
+  --color-bg-surface: #081425;
+  --color-bg-container: #152031;
+  --color-bg-container-high: #1f2a3c;
+  --color-bg-container-highest: #2a3548;
+  --color-primary: #c2c6db;
+  --color-secondary: #ffb3ad;
+  --color-tertiary: #7bd0ff;
+  --color-danger: #ef4444;
+  --color-danger-glow: rgba(239, 68, 68, 0.25);
+  --color-safe: #22c55e;
+  --color-on-surface: #d8e3fb;
+  --color-on-surface-variant: #c7c6cd;
+  --color-outline: #909097;
+  --color-outline-variant: #46464c;
+  --font-inter: 'Inter', sans-serif;
+  --font-geist: 'Geist Mono', monospace;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html, body, #root { height: 100%; margin: 0; padding: 0; }
+  body {
+    background-color: #040e1f;
+    color: #d8e3fb;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(21, 32, 49, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .danger-glow {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.3), 0 0 60px rgba(239, 68, 68, 0.1);
+  }
+  .font-mono-geist {
+    font-family: 'Geist Mono', 'Courier New', monospace;
+  }
+  .tracking-instrument {
+    letter-spacing: 0.08em;
+  }
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  @keyframes danger-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.2), 0 0 40px rgba(239, 68, 68, 0.05); }
+    50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.5), 0 0 80px rgba(239, 68, 68, 0.15); }
+  }
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes number-tick {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-danger-pulse { animation: danger-pulse 2s ease-in-out infinite; }
+  .animate-fade-in-up { animation: fade-in-up 0.4s ease-out forwards; }
+  .animate-spin-slow { animation: spin-slow 2s linear infinite; }
+  .animate-number-tick { animation: number-tick 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+}
